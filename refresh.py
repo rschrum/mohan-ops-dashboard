@@ -326,7 +326,23 @@ def process_messages(tasks, messages, channel_id, seen_ids):
                 changed        = True
                 print(f"  ✅ Marked done: {task['title'][:60]}")
             else:
-                print(f"  ⚠️  No match found for 'done: {query[:40]}'")
+                # No match found — create it as a new completed task
+                title = clean_title(query)
+                if title:
+                    tasks.append({
+                        "id":        str(uuid.uuid4())[:8],
+                        "title":     title,
+                        "status":    "done",
+                        "assignee":  assignee,
+                        "project":   infer_project(title),
+                        "priority":  "low",
+                        "date":      f"Completed {fmt_date(ts)}",
+                        "slack_url": slack_url(channel_id, ts),
+                    })
+                    changed = True
+                    print(f"  ✅ Added as completed: {title[:60]}")
+                else:
+                    print(f"  ⚠️  No match found for: {query[:40]}")
 
         # ── Move to In Progress ────────────────────────────────────────────────
         elif INPROGRESS_RE.match(text):
