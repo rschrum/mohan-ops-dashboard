@@ -1,0 +1,236 @@
+{
+  "last_updated": "2026-03-18T15:00:00+00:00",
+  "processed_ids": [],
+  "tasks": [
+    {
+      "id": "t001",
+      "title": "Upload new Value Engines App questions to all 10 coaches' sites",
+      "status": "todo",
+      "assignee": "nahom",
+      "project": "ve-app",
+      "priority": "high",
+      "date": "Mar 16",
+      "slack_url": "https://mohanops.slack.com/archives/D0AGJS63YLV/p1771992025306429"
+    },
+    {
+      "id": "t002",
+      "title": "Install AI bot on all 10 coaches' instances",
+      "status": "todo",
+      "assignee": "nahom",
+      "project": "ve-app",
+      "priority": "high",
+      "date": "Mar 16",
+      "slack_url": "https://mohanops.slack.com/archives/D0AGN99ED3L/p1773778764746869"
+    },
+    {
+      "id": "t003",
+      "title": "BVP redesign — make look like client tool (less different, more professional)",
+      "status": "todo",
+      "assignee": "kaleab",
+      "project": "design",
+      "priority": "high",
+      "date": "Mar 16",
+      "slack_url": "https://mohanops.slack.com/archives/D0AGN99ED3L/p1773773677345029"
+    },
+    {
+      "id": "t004",
+      "title": "Add time period slots to Annual Sprint Agenda tools",
+      "status": "todo",
+      "assignee": "kaleab",
+      "project": "design",
+      "priority": "medium",
+      "date": "Mar 17",
+      "slack_url": "https://mohanops.slack.com/archives/C0AC2CMB00Z/p1773797884588319"
+    },
+    {
+      "id": "t005",
+      "title": "Share full list of ongoing items with Randy",
+      "status": "todo",
+      "assignee": "kaleab",
+      "project": "design",
+      "priority": "medium",
+      "date": "Promised Mar 18",
+      "slack_url": "https://mohanops.slack.com/archives/C0A4HBBLJPP/p1773780741948519"
+    },
+    {
+      "id": "t006",
+      "title": "Load KBOSS branding kit to Academy library",
+      "status": "todo",
+      "assignee": "nahom",
+      "project": "academy",
+      "priority": "medium",
+      "date": "Feb 24",
+      "slack_url": "https://mohanops.slack.com/archives/D0AGJS63YLV/p1771992025306429"
+    },
+    {
+      "id": "t007",
+      "title": "Clarify Phase 1 placement — is it intentionally omitted from the Annual tool?",
+      "status": "todo",
+      "assignee": "ben",
+      "project": "content",
+      "priority": "medium",
+      "date": "Mar 17",
+      "slack_url": "https://mohanops.slack.com/archives/D0AGN99ED3L/p1773802183929499"
+    },
+    {
+      "id": "t008",
+      "title": "Provide app screenshots for Kaleab to include in deck",
+      "status": "todo",
+      "assignee": "ben",
+      "project": "deck",
+      "priority": "low",
+      "date": "Mar 14",
+      "slack_url": "https://mohanops.slack.com/archives/C0AC2CMB00Z/p1773780840074089"
+    },
+    {
+      "id": "t009",
+      "title": "Set up new valueengines.academy instance for Ben as a coach template",
+      "status": "inprogress",
+      "assignee": "nahom",
+      "project": "ve-app",
+      "priority": "high",
+      "date": "Mar 16",
+      "slack_url": "https://mohanops.slack.com/archives/D0AGN99ED3L/p1773778764746869"
+    },
+    {
+      "id": "t010",
+      "title": "Annual Sprint Model Agenda tool — design with time period slots",
+      "status": "inprogress",
+      "assignee": "kaleab",
+      "project": "design",
+      "priority": "high",
+      "date": "Mar 17",
+      "slack_url": "https://mohanops.slack.com/archives/C0AC2CMB00Z/p1773797119804039"
+    },
+    {
+      "id": "t011",
+      "title": "2-Day Annual Sprint Model Agenda tool design",
+      "status": "inprogress",
+      "assignee": "kaleab",
+      "project": "design",
+      "priority": "high",
+      "date": "Mar 17",
+      "slack_url": "https://mohanops.slack.com/archives/C0AC2CMB00Z/p1773797119804039"
+    },
+    {
+      "id": "t012",
+      "title": "Complete Value Engines pitch deck design (Canva)",
+      "status": "inprogress",
+      "assignee": "kaleab",
+      "project": "deck",
+      "priority": "high",
+      "date": "Ongoing",
+      "slack_url": "https://mohanops.slack.com/archives/C0AC2CMB00Z/p1773797711861759"
+    },
+    {
+      "id": "t013",
+      "title": "Quarterly Agenda branding — design & polish",
+      "status": "inprogress",
+      "assignee": "kaleab",
+      "project": "design",
+      "priority": "medium",
+      "date": "Mar 6",
+      "slack_url": "https://mohanops.slack.com/archives/C0A4HBBLJPP/p1772484135168889"
+    },
+    {
+      "id": "t014",
+      "title": "Basecamp Workbooks — brand Day 1, Day 2, Day 3",
+      "status": "inprogress",
+      "assignee": "kaleab",
+      "project": "design",
+      "priority": "medium",
+      "date": "Mar 1",
+      "slack_url": "https://mohanops.slack.com/archives/C0A4HBBLJPP/p1772377637168889"
+    },
+    {
+      "id": "t015",
+      "title": "Grammar & spelling QC review of all tools (13 issues found on first pass)",
+      "status": "inprogress",
+      "assignee": "randy",
+      "project": "qc",
+      "priority": "medium",
+      "date": "Mar 17",
+      "slack_url": "https://mohanops.slack.com/archives/D0AGN99ED3L/p1773801316321699"
+    },
+    {
+      "id": "t016",
+      "title": "Update all 10 coach instances — push hub changes to satellites",
+      "status": "done",
+      "assignee": "nahom",
+      "project": "ve-app",
+      "priority": "high",
+      "date": "Completed Mar 18",
+      "slack_url": "https://mohanops.slack.com/archives/D0AGJS63YLV/p1773813632024059"
+    },
+    {
+      "id": "t017",
+      "title": "Opportunities & Obstacles Workbook + Coaches Guide — branding complete",
+      "status": "done",
+      "assignee": "kaleab",
+      "project": "design",
+      "priority": "medium",
+      "date": "Completed Mar 5",
+      "slack_url": "https://mohanops.slack.com/archives/C0A4HBBLJPP/p1772484135168889"
+    },
+    {
+      "id": "t018",
+      "title": "Redesign Value Engines tools (Basecamps + core tools)",
+      "status": "done",
+      "assignee": "kaleab",
+      "project": "design",
+      "priority": "medium",
+      "date": "Completed Mar 12",
+      "slack_url": "https://mohanops.slack.com/archives/C0AC2CMB00Z/p1773780741948519"
+    },
+    {
+      "id": "t019",
+      "title": "Grant Randy Canva edit access to shared folder",
+      "status": "done",
+      "assignee": "kaleab",
+      "project": "access",
+      "priority": "low",
+      "date": "Completed Mar 17",
+      "slack_url": "https://mohanops.slack.com/archives/C0A4HBBLJPP/p1773798194082449"
+    },
+    {
+      "id": "t020",
+      "title": "Fix \"Multiplayer\" → \"Multiplier\" typo in APP across all instances",
+      "status": "done",
+      "assignee": "nahom",
+      "project": "ve-app",
+      "priority": "low",
+      "date": "Completed Mar 11",
+      "slack_url": "https://mohanops.slack.com/archives/D0AGJS63YLV/p1771992025306429"
+    },
+    {
+      "id": "t021",
+      "title": "Fix doc visibility issue on Academy app",
+      "status": "done",
+      "assignee": "nahom",
+      "project": "academy",
+      "priority": "low",
+      "date": "Completed Mar 2",
+      "slack_url": "https://mohanops.slack.com/archives/D0AGJS63YLV/p1771992025306429"
+    },
+    {
+      "id": "t022",
+      "title": "Fix editing/client access issue — role permission bug across all instances",
+      "status": "done",
+      "assignee": "nahom",
+      "project": "ve-app",
+      "priority": "low",
+      "date": "Completed Feb 26",
+      "slack_url": "https://mohanops.slack.com/archives/D0AGJS63YLV/p1771992025306429"
+    },
+    {
+      "id": "t023",
+      "title": "Update S.C.O.R.E. content — rename Issue Processing to Opportunities & Obstacles",
+      "status": "done",
+      "assignee": "randy",
+      "project": "content",
+      "priority": "low",
+      "date": "Completed Mar 13",
+      "slack_url": "https://mohanops.slack.com/archives/C0AC2CMB00Z/p1773780741948519"
+    }
+  ]
+}

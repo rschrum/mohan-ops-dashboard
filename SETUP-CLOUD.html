@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cloud Setup Guide — Mohan Ops Dashboard</title>
+  <style>
+    :root {
+      --bg: #0f1117; --surface: #1a1d27; --surface2: #22263a;
+      --border: #2e3250; --accent: #5b6af0; --green: #22c55e;
+      --yellow: #f59e0b; --red: #ef4444; --text: #e2e8f0;
+      --text2: #94a3b8; --text3: #64748b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; }
+    .page { max-width: 860px; margin: 0 auto; padding: 48px 32px; }
+
+    .page-header { margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+    .page-header h1 { font-size: 24px; font-weight: 700; margin-bottom: 6px; }
+    .page-header p { color: var(--text2); font-size: 14px; }
+    .badge { display: inline-block; background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3); color: var(--green); font-size: 11px; font-weight: 600; padding: 2px 10px; border-radius: 20px; margin-left: 10px; vertical-align: middle; }
+
+    .section { margin-bottom: 44px; }
+    h2 { font-size: 16px; font-weight: 700; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+
+    /* Phase blocks */
+    .phase { margin-bottom: 36px; }
+    .phase-header {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px 12px 0 0; padding: 16px 20px;
+      border-bottom: none;
+    }
+    .phase-num {
+      width: 32px; height: 32px; min-width: 32px;
+      border-radius: 8px; background: var(--accent);
+      color: white; font-size: 14px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .phase-title { font-size: 15px; font-weight: 700; }
+    .phase-sub { font-size: 12px; color: var(--text3); margin-top: 2px; }
+    .phase-body {
+      background: var(--surface); border: 1px solid var(--border);
+      border-top: none; border-radius: 0 0 12px 12px; padding: 0;
+      overflow: hidden;
+    }
+
+    /* Steps */
+    .step {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      width: 28px; height: 28px; min-width: 28px;
+      border-radius: 50%; background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text2); font-size: 12px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 1px;
+    }
+    .step-content {}
+    .step-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; color: var(--text); }
+    .step-desc { font-size: 13px; color: var(--text2); line-height: 1.6; }
+    .step-desc strong { color: var(--text); }
+    .step-desc a { color: var(--accent); text-decoration: none; }
+    .step-desc a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    pre {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 8px; padding: 12px 16px; margin: 10px 0;
+      overflow-x: auto; font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
+      font-size: 12px; line-height: 1.6; color: var(--text2);
+    }
+    code { font-family: 'SF Mono', 'Fira Code', Consolas, monospace; font-size: 12px; background: rgba(255,255,255,0.07); border-radius: 4px; padding: 2px 6px; color: #f8c555; }
+
+    /* Callout boxes */
+    .callout {
+      border-radius: 10px; padding: 14px 16px;
+      font-size: 13px; color: var(--text2); margin: 12px 0;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .callout-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .callout-green { background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.2); }
+    .callout-yellow { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.25); }
+    .callout-blue { background: rgba(91,106,240,0.08); border: 1px solid rgba(91,106,240,0.25); }
+    .callout strong { color: var(--text); }
+
+    /* Files table */
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th { text-align: left; padding: 8px 12px; background: var(--surface2); color: var(--text3); font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+    td { padding: 10px 12px; border-top: 1px solid var(--border); vertical-align: top; color: var(--text2); }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* Scopes list */
+    .scope-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+    .scope-chip {
+      background: rgba(91,106,240,0.12); border: 1px solid rgba(91,106,240,0.3);
+      color: var(--accent); font-size: 12px; font-weight: 600;
+      padding: 4px 12px; border-radius: 20px;
+      font-family: 'SF Mono', monospace;
+    }
+
+    /* Result card */
+    .result-card {
+      background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.25);
+      border-radius: 12px; padding: 20px; margin-top: 20px;
+    }
+    .result-card h3 { font-size: 14px; font-weight: 700; color: var(--green); margin-bottom: 10px; }
+    .result-card ul { padding-left: 18px; color: var(--text2); font-size: 13px; }
+    .result-card ul li { margin-bottom: 6px; }
+    .result-card ul li strong { color: var(--text); }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="page-header">
+    <h1>☁️ Cloud Deployment Guide <span class="badge">One-Time Setup</span></h1>
+    <p>Move the Mohan Ops dashboard to the cloud so it auto-refreshes 24/7 — no computer required.</p>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="section">
+    <h2>⚡ How This Works (30-second overview)</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:8px;">
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px; text-align:center;">
+        <div style="font-size:28px; margin-bottom:8px;">🐙</div>
+        <div style="font-size:13px; font-weight:700; margin-bottom:4px;">GitHub Repo</div>
+        <div style="font-size:12px; color:var(--text3);">Stores the dashboard files. GitHub Actions runs a script every 30 min for free.</div>
+      </div>
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px; text-align:center;">
+        <div style="font-size:28px; margin-bottom:8px;">⚙️</div>
+        <div style="font-size:13px; font-weight:700; margin-bottom:4px;">GitHub Actions</div>
+        <div style="font-size:12px; color:var(--text3);">Reads Slack, updates tasks.json, regenerates index.html, commits — all automated.</div>
+      </div>
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px; text-align:center;">
+        <div style="font-size:28px; margin-bottom:8px;">🌐</div>
+        <div style="font-size:13px; font-weight:700; margin-bottom:4px;">Netlify (auto-deploy)</div>
+        <div style="font-size:12px; color:var(--text3);">Connected to GitHub — detects every new commit and instantly publishes the updated dashboard.</div>
+      </div>
+    </div>
+    <div class="callout callout-green">
+      <span class="callout-icon">💰</span>
+      <div><strong>Total cost: $0.</strong> GitHub Actions free tier (public repo = unlimited minutes), GitHub free account, Netlify free tier. Everything here is completely free.</div>
+    </div>
+  </div>
+
+  <!-- FILES IN THIS FOLDER -->
+  <div class="section">
+    <h2>📁 Files in This Package</h2>
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+      <table>
+        <thead><tr><th>File</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td><code>refresh.py</code></td><td>The brain — reads Slack every 30 min, parses commands, regenerates the dashboard HTML</td></tr>
+          <tr><td><code>template.html</code></td><td>The dashboard layout with placeholder slots that refresh.py fills with real task data</td></tr>
+          <tr><td><code>tasks.json</code></td><td>The task database — all current tasks pre-loaded; updated automatically every run</td></tr>
+          <tr><td><code>requirements.txt</code></td><td>Python dependencies (just <code>slack-sdk</code>)</td></tr>
+          <tr><td><code>.github/workflows/refresh.yml</code></td><td>GitHub Actions cron schedule — tells GitHub to run refresh.py every 30 minutes</td></tr>
+          <tr><td><code>SETUP-CLOUD.html</code></td><td>This guide</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- PHASE 1 -->
+  <div class="section">
+    <h2>🛠 Setup Steps</h2>
+
+    <div class="phase">
+      <div class="phase-header">
+        <div class="phase-num">1</div>
+        <div>
+          <div class="phase-title">Create a Slack Bot</div>
+          <div class="phase-sub">~5 minutes · Only needs to be done once</div>
+        </div>
+      </div>
+      <div class="phase-body">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-title">Go to api.slack.com/apps</div>
+            <div class="step-desc">Visit <a href="https://api.slack.com/apps" target="_blank">api.slack.com/apps</a> and click <strong>Create New App → From Scratch</strong>.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-title">Name the app and pick your workspace</div>
+            <div class="step-desc">Name: <strong>Mohan Ops Dashboard</strong> · Workspace: <strong>mohanops</strong> · Click Create App.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-title">Add OAuth Scopes</div>
+            <div class="step-desc">
+              In the left sidebar: <strong>OAuth & Permissions → Scopes → Bot Token Scopes</strong>. Add all 5 of these:
+              <div class="scope-list">
+                <span class="scope-chip">channels:history</span>
+                <span class="scope-chip">groups:history</span>
+                <span class="scope-chip">im:history</span>
+                <span class="scope-chip">channels:read</span>
+                <span class="scope-chip">users:read</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-title">Install the app to your workspace</div>
+            <div class="step-desc">Scroll up on the OAuth page and click <strong>Install to Workspace → Allow</strong>. You'll be redirected back to the OAuth page.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <div class="step-title">Copy the Bot Token</div>
+            <div class="step-desc">
+              On the OAuth page, copy the <strong>Bot User OAuth Token</strong>. It starts with <code>xoxb-</code>. Save this — you'll need it in Step 3.<br><br>
+              <div class="callout callout-yellow" style="margin-top:8px;">
+                <span class="callout-icon">⚠️</span>
+                <div><strong>Keep this token private.</strong> Never paste it in Slack, email, or a public file. It goes only in GitHub Secrets (next steps).</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 2 -->
+    <div class="phase">
+      <div class="phase-header">
+        <div class="phase-num">2</div>
+        <div>
+          <div class="phase-title">Create a GitHub Repository</div>
+          <div class="phase-sub">~3 minutes · One-time</div>
+        </div>
+      </div>
+      <div class="phase-body">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-title">Create a new repo at github.com</div>
+            <div class="step-desc">
+              Go to <a href="https://github.com/new" target="_blank">github.com/new</a>. Settings:
+              <br>• Name: <strong>mohan-ops-dashboard</strong>
+              <br>• Visibility: <strong>Public</strong> (recommended — unlimited free Actions minutes)
+              <br>• Leave all checkboxes unchecked
+              <br><br>Click <strong>Create repository</strong>.
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-title">Upload all files from the cloud-deploy folder</div>
+            <div class="step-desc">
+              On the new (empty) repo page, click <strong>uploading an existing file</strong>. Drag the entire contents of the <code>cloud-deploy</code> folder into the upload area. Make sure <code>.github/workflows/refresh.yml</code> is included.
+              <div class="callout callout-blue" style="margin-top:10px;">
+                <span class="callout-icon">💡</span>
+                <div><strong>Important:</strong> The <code>.github</code> folder starts with a dot and may be hidden on Mac. To show hidden files in Finder, press <strong>Cmd + Shift + .</strong> (period). Make sure to include that folder — it's what tells GitHub to run the script automatically.</div>
+              </div>
+              Click <strong>Commit changes</strong> to upload.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 3 -->
+    <div class="phase">
+      <div class="phase-header">
+        <div class="phase-num">3</div>
+        <div>
+          <div class="phase-title">Add the Slack Token as a Secret</div>
+          <div class="phase-sub">~2 minutes · Keeps the token secure — never in plain text</div>
+        </div>
+      </div>
+      <div class="phase-body">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-title">Open repo Settings → Secrets</div>
+            <div class="step-desc">In your GitHub repo, click <strong>Settings</strong> (top tab) → <strong>Secrets and variables</strong> → <strong>Actions</strong> → <strong>New repository secret</strong>.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-title">Add the secret</div>
+            <div class="step-desc">
+              • <strong>Name:</strong> <code>SLACK_BOT_TOKEN</code> (must be exact, all caps)<br>
+              • <strong>Secret:</strong> paste your <code>xoxb-...</code> token here<br><br>
+              Click <strong>Add secret</strong>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 4 -->
+    <div class="phase">
+      <div class="phase-header">
+        <div class="phase-num">4</div>
+        <div>
+          <div class="phase-title">Connect Netlify to GitHub (auto-deploy)</div>
+          <div class="phase-sub">~3 minutes · This replaces the manual drag-and-drop — Netlify auto-updates every time GitHub gets a new commit</div>
+        </div>
+      </div>
+      <div class="phase-body">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-title">Log in to Netlify and create a site from GitHub</div>
+            <div class="step-desc">
+              Go to <a href="https://app.netlify.com" target="_blank">app.netlify.com</a> → <strong>Add new site → Import an existing project → GitHub</strong>. Authorize Netlify to access your repos if prompted.
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-title">Select your repository</div>
+            <div class="step-desc">Choose <strong>mohan-ops-dashboard</strong> from the list.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-title">Configure deploy settings</div>
+            <div class="step-desc">
+              • <strong>Branch to deploy:</strong> <code>main</code><br>
+              • <strong>Publish directory:</strong> leave blank (or type <code>/</code>)<br>
+              • <strong>Build command:</strong> leave blank<br><br>
+              Click <strong>Deploy site</strong>. Netlify will build and give you a URL like <code>random-name.netlify.app</code>.
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-title">(Optional) Rename the URL</div>
+            <div class="step-desc">Go to <strong>Site settings → General → Site details → Change site name</strong>. Set something like <code>mohan-ops-dashboard</code> to get <code>mohan-ops-dashboard.netlify.app</code>.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 5 -->
+    <div class="phase">
+      <div class="phase-header">
+        <div class="phase-num">5</div>
+        <div>
+          <div class="phase-title">Test It</div>
+          <div class="phase-sub">~2 minutes · Confirm everything is wired up correctly</div>
+        </div>
+      </div>
+      <div class="phase-body">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-title">Trigger a manual run in GitHub Actions</div>
+            <div class="step-desc">
+              In your repo, click the <strong>Actions</strong> tab → <strong>Refresh Dashboard</strong> → <strong>Run workflow → Run workflow</strong>. This fires the script immediately instead of waiting 30 minutes.
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-title">Watch the run complete</div>
+            <div class="step-desc">The run takes about 30–60 seconds. Click on it to see the live log. You should see messages like <code>📡 #all-mohan-ops</code>, <code>💾 Saved tasks.json</code>, <code>✅ Refresh complete</code>. If there's a red ❌, click to read the error — most likely the token scope is wrong or the secret name doesn't match exactly.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-title">Check Netlify auto-deployed</div>
+            <div class="step-desc">Go back to app.netlify.com — you should see a new deployment triggered automatically. Visit your Netlify URL and verify the dashboard shows your tasks. Done! 🎉</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RESULT -->
+  <div class="result-card">
+    <h3>✅ What you have after setup</h3>
+    <ul>
+      <li><strong>GitHub Actions</strong> runs refresh.py every 30 minutes, 24/7 — no computer needed</li>
+      <li><strong>Netlify auto-deploys</strong> within seconds of every GitHub commit — your team always sees the latest</li>
+      <li><strong>Slack commands still work</strong> exactly the same — post in #all-mohan-ops and the board updates on the next cycle</li>
+      <li><strong>Local Claude scheduled task</strong> can be kept as a backup or disabled — your choice</li>
+      <li><strong>Total monthly cost: $0</strong></li>
+    </ul>
+  </div>
+
+  <!-- TROUBLESHOOTING -->
+  <div class="section" style="margin-top:40px;">
+    <h2>🔧 Troubleshooting</h2>
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+      <table>
+        <thead><tr><th>Problem</th><th>Fix</th></tr></thead>
+        <tbody>
+          <tr><td>GitHub Actions run fails with <code>missing_scope</code></td><td>Go back to api.slack.com/apps → OAuth & Permissions → add the missing scope → reinstall the app</td></tr>
+          <tr><td>Run fails with <code>SLACK_BOT_TOKEN not set</code></td><td>Check Settings → Secrets — the name must be exactly <code>SLACK_BOT_TOKEN</code> (all caps, no spaces)</td></tr>
+          <tr><td>Netlify doesn't auto-deploy</td><td>Check that Netlify is connected to the correct GitHub repo. Go to Netlify → Site settings → Build & deploy → verify the repo link.</td></tr>
+          <tr><td>Dashboard shows no tasks</td><td>The bot needs to be <em>installed</em> to the workspace and the channels need to exist. Check the Actions run log for error details.</td></tr>
+          <tr><td>Cron doesn't fire on time</td><td>GitHub Actions cron can be delayed by a few minutes under heavy load. This is normal — the schedule is approximate, not exact.</td></tr>
+          <tr><td>Hidden <code>.github</code> folder not visible on Mac</td><td>In Finder, press <strong>Cmd + Shift + .</strong> to show hidden files, then drag the <code>.github</code> folder into the GitHub upload.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div style="text-align:center; padding: 32px 0 8px; color: var(--text3); font-size:12px; border-top: 1px solid var(--border);">
+    Mohan Ops Dev Team Dashboard · Cloud Setup Guide · March 2026
+  </div>
+
+</div>
+</body>
+</html>
