@@ -2,7 +2,7 @@ name: Refresh Dashboard
 
 on:
   schedule:
-    - cron: '*/45 * * * *'
+    - cron: '*/20 * * * *'
   workflow_dispatch:
 
 permissions:
