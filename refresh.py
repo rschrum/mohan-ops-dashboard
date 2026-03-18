@@ -64,26 +64,109 @@ PROJECT_LABELS = {
 # ─── Command regex patterns ────────────────────────────────────────────────────
 
 DONE_RE = re.compile(
-    r"^(done[\s:\-]+|done with\s|finished\s|completed[:\s]|wrapped up\s|"
-    r"closed[:\s]|shipped[:\s]|✅\s)",
-    re.IGNORECASE,
+    r"^("
+    r"done[\s:,\-/!]+"
+    r"|done with\s+"
+    r"|finished[\s:,\-/!]*"
+    r"|just finished\s+"
+    r"|i'?ve?\s+finished\s+"
+    r"|i'?m\s+done[\s:,\-/!]*"
+    r"|all\s+done[\s:,\-/!]*"
+    r"|completed[\s:,\-/!]*"
+    r"|complete[\s:,\-/!]+"
+    r"|just\s+completed\s+"
+    r"|wrapped\s+up[\s:,\-/!]*"
+    r"|knocked\s+out[\s:,\-/!]*"
+    r"|knocked\s+off[\s:,\-/!]*"
+    r"|took\s+care\s+of\s+"
+    r"|taken\s+care\s+of\s+"
+    r"|closed[\s:,\-/!]*"
+    r"|closed\s+out[\s:,\-/!]*"
+    r"|shipped[\s:,\-/!]*"
+    r"|delivered[\s:,\-/!]*"
+    r"|checked\s+off\s+"
+    r"|crossed\s+off\s+"
+    r"|it'?s\s+(all\s+)?done[\s:,\-/!]*"
+    r"|that'?s\s+done[\s:,\-/!]*"
+    r"|it'?s\s+complete[\s:,\-/!]*"
+    r"|it'?s\s+finished[\s:,\-/!]*"
+    r"|✅\s*"
+    r")", re.IGNORECASE,
 )
+
 INPROGRESS_RE = re.compile(
-    r"^(working[:\s]|in progress[:\s]|started\s|picking up[:\s]|"
-    r"on it[:\s]|beginning\s|kicking off\s|🔄\s)",
-    re.IGNORECASE,
+    r"^("
+    r"working[\s:,\-/!]+"
+    r"|working\s+on\s+"
+    r"|in\s+progress[\s:,\-/!]*"
+    r"|started[\s:,\-/!]*"
+    r"|starting[\s:,\-/!]*"
+    r"|just\s+started\s+"
+    r"|i'?m\s+starting\s+"
+    r"|picking\s+up[\s:,\-/!]*"
+    r"|picked\s+up[\s:,\-/!]*"
+    r"|on\s+it[\s:,\-/!]*"
+    r"|i'?m\s+on\s+(it|this)[\s:,\-/!]*"
+    r"|kicking\s+off[\s:,\-/!]*"
+    r"|kicked\s+off[\s:,\-/!]*"
+    r"|jumping\s+on[\s:,\-/!]*"
+    r"|jumped\s+on[\s:,\-/!]*"
+    r"|handling[\s:,\-/!]*"
+    r"|i'?ll\s+handle\s+"
+    r"|i'?ll\s+take\s+(care\s+of\s+)?(this|that|it)?"
+    r"|taking\s+(this|that|it|on)[\s:,\-/!]*"
+    r"|looking\s+into[\s:,\-/!]*"
+    r"|taking\s+a\s+look\s+(at\s+)?"
+    r"|diving\s+(into|in)[\s:,\-/!]*"
+    r"|getting\s+started\s+(on\s+)?"
+    r"|beginning[\s:,\-/!]*"
+    r"|🔄\s*"
+    r")", re.IGNORECASE,
 )
+
 TODO_RE = re.compile(
-    r"^(todo[:\s]|to do[:\s]|new task[:\s]|task[:\s]|add[:\s]|"
-    r"urgent[:\s]|📌\s|action item[:\s]|assign[:\s]|needs[:\s])",
-    re.IGNORECASE,
+    r"^("
+    r"todo[\s:,\-/!]+"
+    r"|to[\s\-]do[\s:,\-/!]+"
+    r"|new\s+task[\s:,\-/!]+"
+    r"|task[\s:,\-/!]+"
+    r"|add[\s:,\-/!]+"
+    r"|urgent[\s:,\-/!]+"
+    r"|📌\s*"
+    r"|action\s+item[\s:,\-/!]+"
+    r"|assign[\s:,\-/!]+"
+    r"|needs[\s:,\-/!]+"
+    r"|we\s+need[\s:,\-/!]+"
+    r"|need\s+to[\s:,\-/!]+"
+    r"|i\s+need[\s:,\-/!]+"
+    r"|we\s+should[\s:,\-/!]+"
+    r"|please[\s:,\-/!]+"
+    r"|could\s+(you|someone|nahom|kaleab|randy|ben)\s+"
+    r"|can\s+(you|someone|nahom|kaleab|randy|ben)\s+"
+    r"|don'?t\s+forget[\s:,\-/!]+"
+    r"|reminder[\s:,\-/!]+"
+    r"|make\s+sure[\s:,\-/!]+"
+    r"|follow\s+up[\s:,\-/!]+"
+    r"|request[\s:,\-/!]+"
+    r")", re.IGNORECASE,
 )
+
 REMOVE_RE = re.compile(
-    r"^(remove[:\s]|cancel[:\s]|delete[:\s]|drop[:\s])",
-    re.IGNORECASE,
+    r"^("
+    r"remove[\s:,\-/!]+"
+    r"|cancel[\s:,\-/!]+"
+    r"|delete[\s:,\-/!]+"
+    r"|drop[\s:,\-/!]+"
+    r"|nevermind[\s:,\-/!]*"
+    r"|never\s+mind[\s:,\-/!]*"
+    r"|scratch\s+that[\s:,\-/!]*"
+    r"|disregard[\s:,\-/!]+"
+    r"|no\s+longer\s+needed[\s:,\-/!]*"
+    r")", re.IGNORECASE,
 )
+
 PRIORITY_RE = re.compile(
-    r"^(priority[:\s])",
+    r"^(priority[\s:,\-/!]+|make\s+(this\s+)?urgent[\s:,\-/!]*)",
     re.IGNORECASE,
 )
 
