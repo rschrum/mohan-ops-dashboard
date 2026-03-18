@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-18T15:00:00+00:00",
+  "last_updated": "2026-03-18T18:37:19.877524+00:00",
   "processed_ids": [],
   "tasks": [
     {
@@ -24,7 +24,7 @@
     },
     {
       "id": "t003",
-      "title": "BVP redesign — make look like client tool (less different, more professional)",
+      "title": "BVP redesign \u2014 make look like client tool (less different, more professional)",
       "status": "todo",
       "assignee": "kaleab",
       "project": "design",
@@ -64,7 +64,7 @@
     },
     {
       "id": "t007",
-      "title": "Clarify Phase 1 placement — is it intentionally omitted from the Annual tool?",
+      "title": "Clarify Phase 1 placement \u2014 is it intentionally omitted from the Annual tool?",
       "status": "todo",
       "assignee": "ben",
       "project": "content",
@@ -94,7 +94,7 @@
     },
     {
       "id": "t010",
-      "title": "Annual Sprint Model Agenda tool — design with time period slots",
+      "title": "Annual Sprint Model Agenda tool \u2014 design with time period slots",
       "status": "inprogress",
       "assignee": "kaleab",
       "project": "design",
@@ -124,7 +124,7 @@
     },
     {
       "id": "t013",
-      "title": "Quarterly Agenda branding — design & polish",
+      "title": "Quarterly Agenda branding \u2014 design & polish",
       "status": "inprogress",
       "assignee": "kaleab",
       "project": "design",
@@ -134,7 +134,7 @@
     },
     {
       "id": "t014",
-      "title": "Basecamp Workbooks — brand Day 1, Day 2, Day 3",
+      "title": "Basecamp Workbooks \u2014 brand Day 1, Day 2, Day 3",
       "status": "inprogress",
       "assignee": "kaleab",
       "project": "design",
@@ -154,7 +154,7 @@
     },
     {
       "id": "t016",
-      "title": "Update all 10 coach instances — push hub changes to satellites",
+      "title": "Update all 10 coach instances \u2014 push hub changes to satellites",
       "status": "done",
       "assignee": "nahom",
       "project": "ve-app",
@@ -164,7 +164,7 @@
     },
     {
       "id": "t017",
-      "title": "Opportunities & Obstacles Workbook + Coaches Guide — branding complete",
+      "title": "Opportunities & Obstacles Workbook + Coaches Guide \u2014 branding complete",
       "status": "done",
       "assignee": "kaleab",
       "project": "design",
@@ -194,7 +194,7 @@
     },
     {
       "id": "t020",
-      "title": "Fix \"Multiplayer\" → \"Multiplier\" typo in APP across all instances",
+      "title": "Fix \"Multiplayer\" \u2192 \"Multiplier\" typo in APP across all instances",
       "status": "done",
       "assignee": "nahom",
       "project": "ve-app",
@@ -214,7 +214,7 @@
     },
     {
       "id": "t022",
-      "title": "Fix editing/client access issue — role permission bug across all instances",
+      "title": "Fix editing/client access issue \u2014 role permission bug across all instances",
       "status": "done",
       "assignee": "nahom",
       "project": "ve-app",
@@ -224,7 +224,7 @@
     },
     {
       "id": "t023",
-      "title": "Update S.C.O.R.E. content — rename Issue Processing to Opportunities & Obstacles",
+      "title": "Update S.C.O.R.E. content \u2014 rename Issue Processing to Opportunities & Obstacles",
       "status": "done",
       "assignee": "randy",
       "project": "content",
