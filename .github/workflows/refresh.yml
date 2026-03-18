@@ -35,7 +35,8 @@ jobs:
           git config --global user.name  "Mohan Ops Bot"
           git config --global user.email "bot@mohanops.com"
           git add index.html dev-dashboard.html tasks.json
-          git diff --staged --quiet || \
-            git commit -m "chore: dashboard refresh $(date -u +'%Y-%m-%d %H:%M UTC')"
-          git pull --rebase origin main
-          git push
+          git diff --staged --quiet && echo "Nothing to commit" && exit 0
+          git commit -m "chore: dashboard refresh $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git fetch origin
+          git rebase origin/main
+          git push origin main
