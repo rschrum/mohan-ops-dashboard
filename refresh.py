@@ -64,7 +64,7 @@ PROJECT_LABELS = {
 # ─── Command regex patterns ────────────────────────────────────────────────────
 
 DONE_RE = re.compile(
-    r"^(done[:\s]|done with\s|finished\s|completed[:\s]|wrapped up\s|"
+    r"^(done[\s:\-]+|done with\s|finished\s|completed[:\s]|wrapped up\s|"
     r"closed[:\s]|shipped[:\s]|✅\s)",
     re.IGNORECASE,
 )
