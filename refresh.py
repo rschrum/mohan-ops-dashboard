@@ -2,7 +2,7 @@
 """
 Mohan Ops Dev Team Dashboard — Cloud Refresher
 ================================================
-Runs every 30 minutes via GitHub Actions.
+Runs every 10 minutes via GitHub Actions.
 Reads Slack channels, parses task commands, updates tasks.json,
 and regenerates the HTML dashboard (index.html + dev-dashboard.html).
 
